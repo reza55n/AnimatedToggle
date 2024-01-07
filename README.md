@@ -1,8 +1,8 @@
 # AnimatedToggle
 
 ``` JS
-import { AnimatedToggle } from './AnimatedToggle.jsx'
+import { AnimatedToggle } from './AnimatedToggle'
 
 //...
-return <AnimatedToggle doUnmount show={someShowStatae}><SomeChildComp/></AnimatedToggle>
+return <AnimatedToggle show={someShowState}><SomeChildComp/></AnimatedToggle>
 ```
