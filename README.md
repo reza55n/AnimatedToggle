@@ -15,6 +15,7 @@ return <AnimatedToggle show={someShowState}><SomeChildComp/></AnimatedToggle>
 ``` CSS
 .animated-toggle {
   width: fit-content;
+  /*...*/
 }
 ```
 
