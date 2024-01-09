@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 
 /**
  * It doesn't make any renders on children, unless the parent changes the
- * children's reference. Also naturally if doUnmount = true, it mounts and
+ * children's reference. Also naturally if `doUnmount = true`, it mounts and
  * therefore renders the children.
  */
 export const AnimatedToggle = ({
@@ -11,8 +11,8 @@ export const AnimatedToggle = ({
       showStyle = {opacity: '1', marginRight: '0', rotate: '0deg'},
       hideStyle = {opacity: '0', marginRight: '30px', rotate: '-15deg'},
       beforeShowExtraStyle = {marginRight: '-30px', rotate: '15deg'},
-      initDisplay = 'block',
-      doUnmount = false, // On `false`, only sets `display: none`
+      doUnmount = false, // On `false`, sets `display: none` instead
+      initDisplay = 'block', // Only when `doUnmount = false`
       safeDelay = 20, // If it's low, may show up without animation
       children,
     }) => {
@@ -28,18 +28,21 @@ export const AnimatedToggle = ({
       if (beforeShowExtraStyle) {
         setStyle(prev => ({
           ...prev,
+          transition: "none",
           ...beforeShowExtraStyle,
         }))
       }
       timeout = setTimeout(() =>
         setStyle(prev => ({
           ...prev,
+          transition: `all ${secs}s`,
           ...showStyle,
         })), safeDelay)
       
     } else {
       setStyle(prev => ({
         ...prev,
+        transition: `all ${secs}s`,
         ...hideStyle,
       }))
       timeout = setTimeout(() =>
@@ -47,16 +50,18 @@ export const AnimatedToggle = ({
     }
     
     return () => {
-      if (timeout)
+      if (timeout) {
         clearTimeout(timeout)
+        timeout = null
+      }
     }
   }, [show])
   
   if (doUnmount)
-    return display ?
-      <div class="animated-toggle" style={{transition: `all ${secs}s`, ...style, display: initDisplay}}>{children}</div> :
-      <div class="animated-toggle" style={{transition: `all ${secs}s`, ...style, display: 'none'}}></div>
+    return (
+      <div class="animated-toggle" style={style}>{display ? children : ""}</div>
+    )
   else
-    return <div class="animated-toggle" style={{transition: `all ${secs}s`, ...style,
+    return <div class="animated-toggle" style={{...style,
       display: display ? initDisplay : 'none'}}>{children}</div>
 }
