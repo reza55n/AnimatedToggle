@@ -29,6 +29,7 @@ export const AnimatedToggle = ({
         setStyle(prev => ({
           ...prev,
           transition: "none",
+          ...hideStyle,
           ...beforeShowExtraStyle,
         }))
       }
