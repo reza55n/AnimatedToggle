@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react'
 
-// It doesn't make any renders on children, unless the parent changes...
-// ...the children's reference. Also naturally if doUnmount = true, it ...
-// ...mounts and therefore renders the children.
+/**
+ * It doesn't make any renders on children, unless the parent changes the
+ * children's reference. Also naturally if doUnmount = true, it mounts and
+ * therefore renders the children.
+ */
 export const AnimatedToggle = ({
       show = false,
       secs = 0.3,
@@ -52,9 +54,9 @@ export const AnimatedToggle = ({
   
   if (doUnmount)
     return display ?
-      <div style={{transition: `all ${secs}s`, ...style, display: initDisplay}}>{children}</div> :
-      <div style={{transition: `all ${secs}s`, ...style, display: 'none'}}></div>
+      <div class="animated-toggle" style={{transition: `all ${secs}s`, ...style, display: initDisplay}}>{children}</div> :
+      <div class="animated-toggle" style={{transition: `all ${secs}s`, ...style, display: 'none'}}></div>
   else
-    return <div style={{transition: `all ${secs}s`, ...style,
+    return <div class="animated-toggle" style={{transition: `all ${secs}s`, ...style,
       display: display ? initDisplay : 'none'}}>{children}</div>
 }
