@@ -8,9 +8,9 @@ import { useState, useEffect } from 'react'
 export const AnimatedToggle = ({
       show = false,
       secs = 0.3,
-      showStyle = {opacity: '1', marginRight: '0', rotate: '0deg'},
-      hideStyle = {opacity: '0', marginRight: '30px', rotate: '-15deg'},
-      beforeShowExtraStyle = {marginRight: '-30px', rotate: '15deg'},
+      showStyle = {opacity: '1', transform: 'none'},
+      hideStyle = {opacity: '0', transform: 'translateY(16px)'},
+      beforeShowExtraStyle =    {transform: 'translateY(-16px)'},
       doUnmount = false, // On `false`, sets `display: none` instead
       initDisplay = 'block', // Only when `doUnmount = false`
       safeDelay = 20, // If it's low, may show up without animation
