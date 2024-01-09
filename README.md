@@ -22,9 +22,9 @@ return <AnimatedToggle show={someShowState}><SomeChildComp/></AnimatedToggle>
 ``` JS
 const template1 = {
   secs: 1,
-  showStyle: {opacity: '1', marginRight: '0',     color: 'black'},
-  hideStyle: {opacity: '0', marginRight: '30px',  color: 'red'},
-  beforeShowExtraStyle:    {marginRight: '-30px', color: 'blue'},
+  showStyle: {opacity: '1', marginRight: '0',     rotate: '0deg'},
+  hideStyle: {opacity: '0', marginRight: '30px',  rotate: '-15deg'},
+  beforeShowExtraStyle:    {marginRight: '-30px', rotate: '15deg'},
 }
 
 //...
