@@ -1,7 +1,7 @@
 # AnimatedToggle
 
-This component doesn't make any renders on children, unless the parent changes the
-children's reference. Also naturally if you set `doUnmount = true`, it mounts and
+Unlike [React Transition Group](https://reactcommunity.org/react-transition-group/)'s `CSSTransition`, this component doesn't make any renders on children, unless the parent changes the
+children's reference. Also naturally if you send `doUnmount` attribute, it mounts and
 therefore renders the children.
 
 ``` JS
@@ -18,7 +18,7 @@ return <AnimatedToggle show={someShowState}><SomeChildComp/></AnimatedToggle>
 }
 ```
 
-## Customize the `AnimatedToggle`
+## Customize the animation
 ``` JS
 const template1 = {
   secs: 1,
