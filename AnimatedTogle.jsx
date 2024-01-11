@@ -60,7 +60,9 @@ export const AnimatedToggle = ({
   
   if (doUnmount)
     return (
-      <div class="animated-toggle" style={style}>{display ? children : ""}</div>
+      display ?
+        <div class="animated-toggle" style={style}>{children}</div> :
+        null
     )
   else
     return <div class="animated-toggle" style={{...style,
